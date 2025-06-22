@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet N Love Enterprise - Healthy, Happy Pets Start Here</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #DAA520 0%, #FFD700 50%, #B8860B 100%);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(rgba(218, 165, 32, 0.9), rgba(255, 215, 0, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600"><rect fill="%23f0f0f0" width="1000" height="600"/><circle fill="%23DAA520" cx="200" cy="150" r="50" opacity="0.1"/><circle fill="%23FFD700" cx="800" cy="400" r="80" opacity="0.1"/><path fill="%23B8860B" d="M0,300 Q250,200 500,300 T1000,300 V600 H0 Z" opacity="0.1"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .animate-bounce-slow {
+            animation: bounce 2s infinite;
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(218, 165, 32, 0.3);
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #1aa94b;
+            transform: scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-heart text-yellow-500 text-2xl mr-2"></i>
+                        <span class="text-2xl font-bold text-gray-800">Pet N Love Enterprise</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-yellow-500 font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-yellow-500 font-medium">About</a>
+                    <a href="#categories" class="text-gray-700 hover:text-yellow-500 font-medium">Categories</a>
+                    <a href="#contact" class="text-gray-700 hover:text-yellow-500 font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left animate-fade-in">
+                    <h1 class="text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                        Healthy, Happy Pets 
+                        <span class="text-black">Start Here</span>
+                    </h1>
+                    <p class="text-xl text-white mb-8 leading-relaxed">
+                        Discover premium pets, nutritious food, and quality accessories. Your pet's happiness is our priority, and we're here to make every tail wag with joy.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#order-form" class="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 transform hover:scale-105">
+                            Shop Now
+                        </a>
+                        <a href="#categories" class="bg-white text-yellow-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+                            Explore Categories
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center animate-bounce-slow">
+                    <div class="relative">
+                        <div class="absolute -inset-4 bg-white rounded-full opacity-20"></div>
+                        <img src="./image/dog.jpeg" 
+                             alt="Happy Dog" 
+                             class="w-80 h-80 mx-auto rounded-full shadow-2xl object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">About Pet N Love Enterprise</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-6">Our Story Since 2021</h3>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Founded in 2021, Pet N Love Enterprise has been dedicated to bringing joy and companionship into families through our premium pet services. We believe every pet deserves love, care, and the finest quality products.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Our mission is to connect loving families with healthy, happy pets while providing everything needed for their care - from nutritious food to comfortable accessories. We're more than just a pet store; we're your partner in pet parenthood.
+                    </p>
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-yellow-500">500+</div>
+                            <div class="text-gray-600">Happy Families</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-yellow-500">3+</div>
+                            <div class="text-gray-600">Years Experience</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-yellow-500">1000+</div>
+                            <div class="text-gray-600">Pets Rehomed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'><rect fill='%23f8f8f8' width='500' height='400' rx='20'/><circle fill='%23DAA520' cx='150' cy='150' r='40'/><circle fill='%23FFD700' cx='350' cy='200' r='35'/><rect fill='%238B4513' x='100' y='250' width='300' height='100' rx='10'/><circle fill='%23000' cx='130' cy='130' r='5'/><circle fill='%23000' cx='170' cy='130' r='5'/><path fill='%23000' d='M140,160 Q150,170 160,160' stroke='%23000' stroke-width='2'/><text x='250' y='50' font-family='Arial' font-size='24' fill='%23333' text-anchor='middle'>Pet N Love</text><text x='250' y='80' font-family='Arial' font-size='16' fill='%23666' text-anchor='middle'>Since 2021</text></svg>" 
+                         alt="Pet N Love Enterprise" 
+                         class="w-full rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-6 -right-6 bg-yellow-500 text-white p-4 rounded-full">
+                        <i class="fas fa-award text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Categories</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Explore our comprehensive range of pets, premium food, and quality accessories
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-2xl p-8 text-center text-white">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-dog text-3xl text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Pets for Sale</h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        Premium dogs, cats, birds and more from trusted breeders
+                    </p>
+                    <ul class="space-y-2 text-left">
+                        <li><i class="fas fa-check mr-2"></i>Healthy & Vaccinated</li>
+                        <li><i class="fas fa-check mr-2"></i>Purebred Certificates</li>
+                        <li><i class="fas fa-check mr-2"></i>Health Guarantee</li>
+                    </ul>
+                </div>
+                <div class="card-hover bg-gradient-to-br from-gray-800 to-black rounded-2xl p-8 text-center text-white">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-bone text-3xl text-gray-800"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Pet Food & Treats</h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        Nutritious food and delicious treats for optimal health
+                    </p>
+                    <ul class="space-y-2 text-left">
+                        <li><i class="fas fa-check mr-2"></i>Premium Nutrition</li>
+                        <li><i class="fas fa-check mr-2"></i>All Ages & Sizes</li>
+                        <li><i class="fas fa-check mr-2"></i>Natural Ingredients</li>
+                    </ul>
+                </div>
+                <div class="card-hover bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-2xl p-8 text-center text-white">
+                    <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-home text-3xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Accessories</h3>
+                    <p class="text-lg mb-6 opacity-90">
+                        Comfortable beds, toys, and essential accessories
+                    </p>
+                    <ul class="space-y-2 text-left">
+                        <li><i class="fas fa-check mr-2"></i>Quality Materials</li>
+                        <li><i class="fas fa-check mr-2"></i>Comfortable Design</li>
+                        <li><i class="fas fa-check mr-2"></i>Durable & Safe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Pets Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Featured Dog Breeds</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Discover our premium selection of healthy, well-bred dogs
+                </p>
+            </div>
+            <div class="pet-grid">
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg flex-col">
+                    <div class="h-64 bg-gradient-to-br from-yellow-200 to-yellow-400 flex  items-center justify-center">
+                        <img src="./image/tu.jpeg"  class="w-20 h-20 rounded-full justify-center flex  items-center  srcset="">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Chihuahua</h3>
+                        <p class="text-gray-600 mb-4">Small, loyal, and full of personality. Perfect for apartment living.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-500">₦50,000+</span>
+                            <button class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center">
+                        <svg class="w-32 h-32" viewBox="0 0 200 200">
+                            <circle fill="#654321" cx="100" cy="100" r="85"/>
+                            <circle fill="#000" cx="75" cy="85" r="8"/>
+                            <circle fill="#000" cx="125" cy="85" r="8"/>
+                            <ellipse fill="#000" cx="100" cy="115" rx="15" ry="10"/>
+                            <path fill="#000" d="M85,135 Q100,145 115,135" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">German Shepherd</h3>
+                        <p class="text-gray-600 mb-4">Intelligent, versatile, and loyal. Excellent family guardians.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-500">₦120,000+</span>
+                            <button class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover bg-white rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-yellow-300 to-yellow-500 flex items-center justify-center">
+                        <svg class="w-32 h-32" viewBox="0 0 200 200">
+                            <circle fill="#DAA520" cx="100" cy="100" r="80"/>
+                            <circle fill="#000" cx="80" cy="85" r="8"/>
+                            <circle fill="#000" cx="120" cy="85" r="8"/>
+                            <ellipse fill="#000" cx="100" cy="115" rx="12" ry="8"/>
+                            <path fill="#000" d="M88,135 Q100,145 112,135" stroke-width="2"/>
+                            <path fill="#DAA520" d="M70,70 Q80,50 90,70 Q100,50 110,70 Q120,50 130,70" stroke="#B8860B" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Golden Retriever</h3>
+                        <p class="text-gray-600 mb-4">Friendly, intelligent, and devoted. Perfect family companions.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-500">₦100,000+</span>
+                            <button class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600 transition-colors">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">What Our Customers Say</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover bg-gray-50 rounded-2xl p-8 text-center">
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "Amazing service! Got my Golden Retriever from Pet N Love and couldn't be happier. The puppy was healthy, well-trained, and absolutely adorable."
+                    </p>
+                    <div class="font-semibold text-gray-800">Sarah Johnson</div>
+                    <div class="text-gray-500">Lagos, Nigeria</div>
+                </div>
+                <div class="card-hover bg-gray-50 rounded-2xl p-8 text-center">
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "The pet food quality is outstanding! My dogs love the treats, and I love knowing they're getting premium nutrition. Highly recommend Pet N Love!"
+                    </p>
+                    <div class="font-semibold text-gray-800">Michael Adebayo</div>
+                    <div class="text-gray-500">Abuja, Nigeria</div>
+                </div>
+                <div class="card-hover bg-gray-50 rounded-2xl p-8 text-center">
+                    <div class="text-yellow-500 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "Professional service from start to finish. The accessories are high quality and my cat loves her new bed. Will definitely order again!"
+                    </p>
+                    <div class="font-semibold text-gray-800">Fatima Hassan</div>
+                    <div class="text-gray-500">Port Harcourt, Nigeria</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Order Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">How to Order</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Getting your perfect pet is easy with our simple 3-step process
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-yellow-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
+                        1
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Browse Products</h3>
+                    <p class="text-gray-600 mb-6">
+                        Explore our wide selection of pets, food, and accessories. Find exactly what you're looking for.
+                    </p>
+                    <div class="bg-yellow-500 h-1 w-12 mx-auto"></div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-black text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
+                        2
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Place Order</h3>
+                    <p class="text-gray-600 mb-6">
+                        Fill out our simple order form with your details and requirements. We'll handle the rest.
+                    </p>
+                    <a href="#order-form" class="bg-yellow-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors inline-block">
+                        Order Now
+                    </a>
+                </div>
+                <div class="text-center">
+                    <div class="bg-yellow-500 text-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 text-2xl font-bold">
+                        3
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Get Delivered</h3>
+                    <p class="text-gray-600 mb-6">
+                        Enjoy fast, safe delivery to your doorstep. Your new companion awaits!
+                    </p>
+                    <div class="bg-yellow-500 h-1 w-12 mx-auto"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section id="order-form" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Place Your Order</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600">
+                    Fill out the form below and we'll get back to you within 24 hours
+                </p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-8">
+                <form id="orderForm" class="space-y-6" action="https://formsubmit.co/festy955@gmail.com" method="POST">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-2">WhatsApp Contact *</label>
+                        <input type="tel" id="whatsapp" name="whatsapp" required 
+                               placeholder="e.g., +234 801 234 5678"
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">What would you like to order? *</label>
+                        <textarea id="message" name="message" rows="6" required 
+                                  placeholder="Please describe what you're looking for (pet breed, food type, accessories, etc.)"
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" 
+                                class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Submit Order
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pet Images Gallery Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Our Beautiful Pets</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    See some of our adorable pets who have found loving homes
+                </p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-orange-200 to-orange-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <ellipse fill="#FF6B35" cx="75" cy="75" rx="60" ry="50"/>
+                            <circle fill="#000" cx="60" cy="65" r="5"/>
+                            <circle fill="#000" cx="90" cy="65" r="5"/>
+                            <ellipse fill="#000" cx="75" cy="85" rx="8" ry="5"/>
+                            <path fill="#FF6B35" d="M45,45 Q55,35 65,45 Q75,35 85,45 Q95,35 105,45"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <ellipse fill="#708090" cx="75" cy="75" rx="55" ry="45"/>
+                            <circle fill="#000" cx="65" cy="70" r="4"/>
+                            <circle fill="#000" cx="85" cy="70" r="4"/>
+                            <path fill="#FF69B4" cx="75" cy="85" d="M70,85 Q75,90 80,85"/>
+                            <path fill="#708090" d="M50,50 L60,40 L70,50 M80,50 L90,40 L100,50"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-blue-200 to-blue-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <ellipse fill="#4169E1" cx="75" cy="80" rx="45" ry="35"/>
+                            <circle fill="#000" cx="65" cy="75" r="3"/>
+                            <circle fill="#000" cx="85" cy="75" r="3"/>
+                            <ellipse fill="#FFD700" cx="75" cy="60" rx="8" ry="4"/>
+                            <path fill="#4169E1" d="M30,70 Q40,60 50,70 M100,70 Q110,60 120,70"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-green-200 to-green-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <circle fill="#32CD32" cx="75" cy="75" r="40"/>
+                            <circle fill="#000" cx="65" cy="70" r="4"/>
+                            <circle fill="#000" cx="85" cy="70" r="4"/>
+                            <path fill="#FF0000" d="M65,85 Q75,95 85,85"/>
+                            <ellipse fill="#FFFF00" cx="75" cy="55" rx="12" ry="6"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-purple-200 to-purple-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <ellipse fill="#9370DB" cx="75" cy="75" rx="50" ry="40"/>
+                            <circle fill="#000" cx="65" cy="70" r="4"/>
+                            <circle fill="#000" cx="85" cy="70" r="4"/>
+                            <ellipse fill="#000" cx="75" cy="85" rx="6" ry="4"/>
+                            <path fill="#9370DB" d="M50,55 Q60,45 70,55 Q80,45 90,55 Q100,45 110,55"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-pink-200 to-pink-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <circle fill="#FF69B4" cx="75" cy="75" r="45"/>
+                            <circle fill="#000" cx="65" cy="70" r="4"/>
+                            <circle fill="#000" cx="85" cy="70" r="4"/>
+                            <path fill="#000" d="M70,85 Q75,90 80,85"/>
+                            <ellipse fill="#FFF" cx="75" cy="55" rx="15" ry="8"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-yellow-200 to-yellow-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <ellipse fill="#FFD700" cx="75" cy="75" rx="55" ry="45"/>
+                            <circle fill="#000" cx="60" cy="70" r="5"/>
+                            <circle fill="#000" cx="90" cy="70" r="5"/>
+                            <ellipse fill="#000" cx="75" cy="85" rx="8" ry="5"/>
+                            <path fill="#FFD700" d="M40,50 Q50,40 60,50 Q70,40 80,50 Q90,40 100,50 Q110,40 120,50"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="card-hover rounded-2xl overflow-hidden shadow-lg">
+                    <div class="h-64 bg-gradient-to-br from-red-200 to-red-400 flex items-center justify-center">
+                        <svg class="w-24 h-24" viewBox="0 0 150 150">
+                            <ellipse fill="#DC143C" cx="75" cy="75" rx="50" ry="40"/>
+                            <circle fill="#000" cx="65" cy="70" r="4"/>
+                            <circle fill="#000" cx="85" cy="70" r="4"/>
+                            <path fill="#000" d="M70,85 Q75,90 80,85"/>
+                            <ellipse fill="#FFF" cx="75" cy="95" rx="20" ry="8"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">Get in Touch</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-600">
+                    Have questions? We'd love to hear from you!
+                </p>
+            </div>
+            <div class="bg-gray-50 rounded-2xl p-8">
+                <form id="contactForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="contactName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="contactName" name="contactName" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="contactEmail" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="contactEmail" name="contactEmail" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="contactSubject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                        <input type="text" id="contactSubject" name="contactSubject" 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label for="contactMessage" class="block text-sm font-medium text-gray-700 mb-2">Message *</label>
+                        <textarea id="contactMessage" name="contactMessage" rows="6" required 
+                                  placeholder="Tell us how we can help you..."
+                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-500 focus:border-transparent"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" 
+                                class="bg-gradient-to-r from-black to-gray-800 text-white px-8 py-4 rounded-full font-bold text-lg hover:from-gray-800 hover:to-black transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-heart text-yellow-500 text-2xl mr-2"></i>
+                        <span class="text-2xl font-bold">Pet N Love Enterprise</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">
+                        Since 2021, we've been connecting loving families with healthy, happy pets. Your pet's happiness is our priority, and we're here to make every tail wag with joy.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-yellow-500 p-3 rounded-full hover:bg-yellow-600 transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-yellow-500 p-3 rounded-full hover:bg-yellow-600 transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-yellow-500 p-3 rounded-full hover:bg-yellow-600 transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://wa.me/2348108094806" class="bg-green-500 p-3 rounded-full hover:bg-green-600 transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-yellow-500 transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-300 hover:text-yellow-500 transition-colors">About Us</a></li>
+                        <li><a href="#categories" class="text-gray-300 hover:text-yellow-500 transition-colors">Categories</a></li>
+                        <li><a href="#order-form" class="text-gray-300 hover:text-yellow-500 transition-colors">Order Now</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-yellow-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Contact Info</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center">
+                            <i class="fas fa-phone text-yellow-500 mr-3"></i>
+                            <span class="text-gray-300">+234 810 809 4806</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-yellow-500 mr-3"></i>
+                            <span class="text-gray-300">Algorithmfesty@gmail.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-whatsapp text-green-500 mr-3"></i>
+                            <span class="text-gray-300">WhatsApp Available</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-yellow-500 mr-3"></i>
+                            <span class="text-gray-300">24/7 Customer Support</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-300">
+                    © 2024 Pet N Love Enterprise. All rights reserved. | Made with ❤️ for pet lovers
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2348108094806?text=Hello! I'm interested in your pets and services." 
+       class="whatsapp-float" 
+       target="_blank" 
+       aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp" style="margin-top:16px;"></i>
+    </a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Order Form Submission
+       /* document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const fullName = formData.get('fullName');
+            const email = formData.get('email');
+            const whatsapp = formData.get('whatsapp');
+            const message = formData.get('message');
+            
+            const subject = 'New Order from Pet N Love Website';
+            const body = `
+New Order Details:
+
+Full Name: ${fullName}
+Email: ${email}
+WhatsApp: ${whatsapp}
+
+Order Details:
+${message}
+
+---
+This order was submitted through the Pet N Love Enterprise website.
+            `.trim();
+            
+            const mailtoLink = `mailto:Algorithmfesty@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for your order! Your email client will open to send the order details. We will get back to you within 24 hours.');
+            
+            // Reset form
+            this.reset();
+        });*/
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const contactName = formData.get('contactName');
+            const contactEmail = formData.get('contactEmail');
+            const contactSubject = formData.get('contactSubject') || 'Contact Form Inquiry';
+            const contactMessage = formData.get('contactMessage');
+            
+            const subject = `Contact Form: ${contactSubject}`;
+            const body = `
+New Contact Form Message:
+
+Name: ${contactName}
+Email: ${contactEmail}
+Subject: ${contactSubject}
+
+Message:
+${contactMessage}
+
+---
+This message was submitted through the Pet N Love Enterprise website contact form.
+            `.trim();
+            
+            const mailtoLink = `mailto:Algorithmfesty@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Thank you for contacting us! Your email client will open to send your message. We will respond as soon as possible.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+        
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+    </script>
+
+</body>
+</html>
