@@ -6,7 +6,7 @@
     <title>Pet N Love Enterprise - Healthy, Happy Pets Start Here</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="./script.js"></script>
+    <script src="script.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
         
@@ -89,7 +89,7 @@
 
     <!-- Navigation -->
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg fixed w-full z-50">
+    <nav class="bg-white shadow-lg fixed w-full z-50 p-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
@@ -169,7 +169,7 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="py-20 bg-gray-50">
+    <section id="about" class="py-20 px-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">About Pet N Love Enterprise</h2>
@@ -831,6 +831,50 @@ This message was submitted through the Pet N Love Enterprise website contact for
         
         document.body.style.opacity = '0';
         document.body.style.transition = 'opacity 0.5s ease';
+
+
+
+        //Nav menu
+         // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        let isMenuOpen = false;
+
+        mobileMenuButton.addEventListener('click', function() {
+            isMenuOpen = !isMenuOpen;
+            
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+                isMenuOpen = false;
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+                isMenuOpen = false;
+            }
+        });
     </script>
 
 </body>
