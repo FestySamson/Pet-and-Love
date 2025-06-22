@@ -6,6 +6,7 @@
     <title>Pet N Love Enterprise - Healthy, Happy Pets Start Here</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="./script.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
         
@@ -87,19 +88,48 @@
 <body class="bg-white">
 
     <!-- Navigation -->
+    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <img src="./image/fav.png" class="w-20 h-20 rounded-2xl" alt="" srcset="">
+                        <img src="./image/fav.png" class="w-20 h-20" alt="" srcset="">
                     </div>
                 </div>
+                
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-gray-700 hover:text-yellow-500 font-medium">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-yellow-500 font-medium">About</a>
-                    <a href="#categories" class="text-gray-700 hover:text-yellow-500 font-medium">Categories</a>
-                    <a href="#contact" class="text-gray-700 hover:text-yellow-500 font-medium">Contact</a>
+                    <a href="#home" class="text-gray-700 hover:text-yellow-500 font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-yellow-500 font-medium transition-colors">About</a>
+                    <a href="#categories" class="text-gray-700 hover:text-yellow-500 font-medium transition-colors">Categories</a>
+                    <a href="#contact" class="text-gray-700 hover:text-yellow-500 font-medium transition-colors">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-yellow-500 focus:outline-none focus:text-yellow-500 transition-colors">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path id="close-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" style="display: none;" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+                    <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-gray-50 font-medium transition-colors rounded-md">Home</a>
+                    <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-gray-50 font-medium transition-colors rounded-md">About</a>
+                    <a href="#categories" class="block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-gray-50 font-medium transition-colors rounded-md">Categories</a>
+                    <a href="#order-form" class="block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-gray-50 font-medium transition-colors rounded-md">Order Now</a>
+                    <a href="#contact" class="block px-3 py-2 text-gray-700 hover:text-yellow-500 hover:bg-gray-50 font-medium transition-colors rounded-md">Contact</a>
+                    <div class="pt-2">
+                        <a href="https://wa.me/2348108094806" class="block px-3 py-2 bg-green-500 text-white rounded-md text-center font-medium hover:bg-green-600 transition-colors">
+                            <i class="fab fa-whatsapp mr-2"></i>WhatsApp Us
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
